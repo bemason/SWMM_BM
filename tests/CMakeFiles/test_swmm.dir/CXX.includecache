@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/HP/Stormwater-Management-Model-pollutant_tracker/tests/test_swmm.cpp
+/Users/HP/Stormwater-Management-Model/tests/test_swmm.cpp
 boost/test/included/unit_test.hpp
 -
 stdlib.h
@@ -18,7 +18,7 @@ string
 math.h
 -
 swmm5.h
-/Users/HP/Stormwater-Management-Model-pollutant_tracker/tests/swmm5.h
+/Users/HP/Stormwater-Management-Model/tests/swmm5.h
 
 /opt/local/include/boost/algorithm/cxx11/all_of.hpp
 boost/range/begin.hpp

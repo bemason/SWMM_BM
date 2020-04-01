@@ -6,5 +6,5 @@ C_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -f
 
 C_DEFINES = -Dswmm_output_EXPORTS
 
-C_INCLUDES = -I/Users/HP/Stormwater-Management-Model-pollutant_tracker/tools/swmm-output -I/Users/HP/Stormwater-Management-Model-pollutant_tracker/tools/swmm-output/include 
+C_INCLUDES = -I/Users/HP/Stormwater-Management-Model/tools/swmm-output -I/Users/HP/Stormwater-Management-Model/tools/swmm-output/include 
 

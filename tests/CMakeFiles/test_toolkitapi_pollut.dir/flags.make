@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/local/include -I/Users/HP/Stormwater-Management-Model-pollutant_tracker/include -I/Users/HP/Stormwater-Management-Model-pollutant_tracker/tools/swmm-output/include 
+CXX_INCLUDES = -I/opt/local/include -I/Users/HP/Stormwater-Management-Model/include -I/Users/HP/Stormwater-Management-Model/tools/swmm-output/include 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/HP/Stormwater-Management-Model-pollutant_tracker/tests
+# Install script for directory: /Users/HP/Stormwater-Management-Model/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

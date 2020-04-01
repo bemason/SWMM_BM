@@ -6,5 +6,5 @@ C_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -f
 
 C_DEFINES = -DCLE=TRUE
 
-C_INCLUDES = -I/usr/local/opt/libomp/include -I/Users/HP/Stormwater-Management-Model-pollutant_tracker/include 
+C_INCLUDES = -I/usr/local/opt/libomp/include -I/Users/HP/Stormwater-Management-Model/include 
 
