@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -dynamiclib -Wl,-headerpad_max_install_names  -o ../../lib/libswmm-output.dylib -install_name @rpath/libswmm-output.dylib CMakeFiles/swmm-output.dir/src/swmm_output.c.o CMakeFiles/swmm-output.dir/src/errormanager.c.o 
