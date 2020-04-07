@@ -294,6 +294,7 @@ int  project_init(void)
 // 
 {
     int j;
+
     climate_initState();
     lid_initState();
     for (j=0; j<Nobjects[TSERIES]; j++)  table_tseriesInit(&Tseries[j]);

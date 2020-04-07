@@ -307,8 +307,17 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
     for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
         printf("\n Cin: %f \n", Cin[p]);
-        cOut = Node[j].externalQual[p];
-        printf("\n ExternalQual: %f \n", cOut);            
+
+        if (Cin[p] == 0.0) 
+        {
+            cOut = Node[j].newQual[p];
+            printf("\n ExternalQual = newQual \n");
+        }
+        else
+        {
+            cOut = Node[j].externalQual[p];
+            printf("\n ExternalQual: %f \n", cOut);
+        }            
     
         // --- mass lost must account for any initial mass in storage 
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 

@@ -38,18 +38,6 @@ findroot.h
 headers.h
 /Users/HP/Stormwater-Management-Model/src/headers.h
 
-/Users/HP/Stormwater-Management-Model/src/datetime.c
-math.h
--
-string.h
--
-stdlib.h
--
-stdio.h
--
-datetime.h
-/Users/HP/Stormwater-Management-Model/src/datetime.h
-
 /Users/HP/Stormwater-Management-Model/src/datetime.h
 
 /Users/HP/Stormwater-Management-Model/src/dwflow.c
@@ -70,12 +58,6 @@ omp.h
 
 /Users/HP/Stormwater-Management-Model/src/enums.h
 
-/Users/HP/Stormwater-Management-Model/src/error.c
-string.h
--
-error.h
-/Users/HP/Stormwater-Management-Model/src/error.h
-
 /Users/HP/Stormwater-Management-Model/src/error.h
 
 /Users/HP/Stormwater-Management-Model/src/exfil.c
@@ -91,12 +73,6 @@ exfil.h
 /Users/HP/Stormwater-Management-Model/src/exfil.h
 
 /Users/HP/Stormwater-Management-Model/src/exfil.h
-
-/Users/HP/Stormwater-Management-Model/src/findroot.c
-math.h
--
-findroot.h
-/Users/HP/Stormwater-Management-Model/src/findroot.h
 
 /Users/HP/Stormwater-Management-Model/src/findroot.h
 
@@ -137,14 +113,6 @@ headers.h
 /Users/HP/Stormwater-Management-Model/src/headers.h
 odesolve.h
 /Users/HP/Stormwater-Management-Model/src/odesolve.h
-
-/Users/HP/Stormwater-Management-Model/src/hash.c
-stdlib.h
--
-string.h
--
-hash.h
-/Users/HP/Stormwater-Management-Model/src/hash.h
 
 /Users/HP/Stormwater-Management-Model/src/hash.h
 
@@ -236,12 +204,6 @@ headers.h
 lid.h
 /Users/HP/Stormwater-Management-Model/src/lid.h
 
-/Users/HP/Stormwater-Management-Model/src/keywords.c
-stdlib.h
--
-text.h
-/Users/HP/Stormwater-Management-Model/src/text.h
-
 /Users/HP/Stormwater-Management-Model/src/keywords.h
 
 /Users/HP/Stormwater-Management-Model/src/kinwave.c
@@ -302,16 +264,6 @@ headers.h
 
 /Users/HP/Stormwater-Management-Model/src/macros.h
 
-/Users/HP/Stormwater-Management-Model/src/main.c
-stdio.h
--
-string.h
--
-time.h
--
-swmm5.h
-/Users/HP/Stormwater-Management-Model/src/swmm5.h
-
 /Users/HP/Stormwater-Management-Model/src/massbal.c
 string.h
 -
@@ -324,29 +276,7 @@ headers.h
 swmm5.h
 /Users/HP/Stormwater-Management-Model/src/swmm5.h
 
-/Users/HP/Stormwater-Management-Model/src/mathexpr.c
-ctype.h
--
-stdlib.h
--
-string.h
--
-stdlib.h
--
-math.h
--
-mathexpr.h
 /Users/HP/Stormwater-Management-Model/src/mathexpr.h
-
-/Users/HP/Stormwater-Management-Model/src/mathexpr.h
-
-/Users/HP/Stormwater-Management-Model/src/mempool.c
-stdlib.h
--
-stdlib.h
--
-mempool.h
-/Users/HP/Stormwater-Management-Model/src/mempool.h
 
 /Users/HP/Stormwater-Management-Model/src/mempool.h
 
@@ -369,14 +299,6 @@ infil.h
 /Users/HP/Stormwater-Management-Model/src/infil.h
 exfil.h
 /Users/HP/Stormwater-Management-Model/src/exfil.h
-
-/Users/HP/Stormwater-Management-Model/src/odesolve.c
-stdlib.h
--
-math.h
--
-odesolve.h
-/Users/HP/Stormwater-Management-Model/src/odesolve.h
 
 /Users/HP/Stormwater-Management-Model/src/odesolve.h
 

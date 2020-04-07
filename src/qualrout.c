@@ -74,7 +74,6 @@ void    qualrout_init()
             if ( isWet ) c = Pollut[p].initConcen;
             Node[i].oldQual[p] = c;
             Node[i].newQual[p] = c;
-            Node[i].externalQual[p] = c;
             printf("\n qualrout_init c: %f \n", c);
         }
     }
@@ -130,8 +129,9 @@ void qualrout_execute(double tStep)
         else findNodeQual(j);
 
         // --- apply treatment to new quality values
-        if ( Node[j].treatment ) treatmnt_treat(j, qIn, vAvg, tStep);
-        if (Node[j].externalTreatment == 1) treatmnt_custom(j, qIn, vAvg, tStep);
+        if ( Node[j].treatment && Node[j].externalTreatment == 0 ) treatmnt_treat(j, qIn, vAvg, tStep);
+        if ( Node[j].externalTreatment == 1 ) treatmnt_custom(j, qIn, vAvg, tStep);
+
         printf(" \n treat_step \n");
     }
 
