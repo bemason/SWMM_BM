@@ -528,8 +528,6 @@ int DLLEXPORT swmm_getNodeParam(int index, int Param, double *value)
                 *value = Node[index].pondedArea * UCF(LENGTH) * UCF(LENGTH); break;
             case SM_INITDEPTH:
                 *value = Node[index].initDepth * UCF(LENGTH); break;
-            case SM_EXTERNALTREATMENT_N:
-                *value = Node[index].externalTreatment; break;
             default: errcode = ERR_API_OUTBOUNDS; break;
         }
     }
@@ -574,9 +572,6 @@ int DLLEXPORT swmm_setNodeParam(int index, int Param, double value)
                 Node[index].pondedArea = value / ( UCF(LENGTH) * UCF(LENGTH) ); break;
             case SM_INITDEPTH:
                 Node[index].initDepth = value / UCF(LENGTH); break;
-            case SM_EXTERNALTREATMENT_N:
-                Node[index].externalTreatment = value; break;
-                printf("\n SetFlag \n");
             default: errcode = ERR_API_OUTBOUNDS; break;
         }
     }
@@ -1009,6 +1004,7 @@ int DLLEXPORT swmm_setNodePollutant(int index, int pollutant_index, double pollu
         if (pollutant_index < Nobjects[POLLUT])
         {
             Node[index].externalQual[pollutant_index] = pollutant;
+            Node[index].externalTreatment = 1;
         } 
     }
     return(errcode);
@@ -1040,7 +1036,7 @@ int DLLEXPORT swmm_getLinkPollutant(int index, int pollutant_index, double *poll
     {
         if (pollutant_index < Nobjects[POLLUT])
         {
-            result = Link[index].newQual[pollutant_index];
+            result = Link[index].externalQual[pollutant_index];
         } 
         *pollutant = result;
     }
@@ -1072,7 +1068,8 @@ int DLLEXPORT swmm_setLinkPollutant(int index, int pollutant_index, double pollu
     {
         if (pollutant_index < Nobjects[POLLUT])
         {
-        //    Link[index].externalQual[pollutant_index] = pollutant;
+            Link[index].externalQual[pollutant_index] = pollutant;
+            Link[index].externalTreatment = 1;
         } 
     }
     return(errcode);

@@ -244,8 +244,6 @@ void node_initState(int j)
     {
         Node[j].oldQual[p]  = 0.0;
         Node[j].newQual[p]  = 0.0;
-        printf("\n Node_initState \n");
-
     }
 
     // --- initialize any inflow

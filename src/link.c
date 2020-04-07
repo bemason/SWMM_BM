@@ -510,7 +510,6 @@ void link_initState(int j)
         Link[j].oldQual[p] = 0.0;
         Link[j].newQual[p] = 0.0;
 	    Link[j].totalLoad[p] = 0.0;
-        //Link[j].externalQual[p] = 0.0;
     }
 }
 

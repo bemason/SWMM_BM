@@ -187,13 +187,14 @@ void  treatmnt_setInflow(double qIn, double wIn[])
 //  Purpose: computes and saves array of inflow concentrations to a node.
 //
 {
-    printf("\n setInflow \n");
     int p;
-
+    
     if ( qIn > 0.0 )
         for (p = 0; p < Nobjects[POLLUT]; p++) Cin[p] = wIn[p]/qIn;
     else
         for (p = 0; p < Nobjects[POLLUT]; p++) Cin[p] = 0.0;
+
+    printf("\n SetInflow \n");
 }
 
 //=============================================================================
@@ -247,7 +248,6 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
     // --- update nodal concentrations and mass balances
     else for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
-        printf("\n Cin: %f \n", Cin[p]);
         if ( R[p] == 0.0 ) continue;
         treatment = &Node[j].treatment[p];
 
@@ -301,24 +301,22 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
     int    p;                          // pollutant index
     double cOut;                       // concentration after treatment
     double massLost;                   // mass lost by treatment per time step
-    printf("\n treatmnt_custom \n");
+
+    printf("\n treatmnt_custom \n"); 
 
     // --- update nodal concentrations and mass balances
     for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
-        printf("\n Cin: %f \n", Cin[p]);
-
-        if (Cin[p] == 0.0) 
-        {
-            cOut = Node[j].newQual[p];
-            printf("\n ExternalQual = newQual \n");
-        }
-        else
+        if ( Node[j].externalTreatment == 1 ) 
         {
             cOut = Node[j].externalQual[p];
-            printf("\n ExternalQual: %f \n", cOut);
-        }            
-    
+            Node[j].externalTreatment = 0;
+        }
+        else 
+        {
+            cOut = Node[j].newQual[p];
+            Node[j].externalQual[p] = Node[j].newQual[p];
+        }
         // --- mass lost must account for any initial mass in storage 
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 
                     cOut*(q*tStep + Node[j].oldVolume)) / tStep; 
