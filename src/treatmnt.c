@@ -248,6 +248,7 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
     // --- update nodal concentrations and mass balances
     else for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
+        printf("\n Cin_tt: %f \n", Cin[p]);
         if ( R[p] == 0.0 ) continue;
         treatment = &Node[j].treatment[p];
 
@@ -307,7 +308,12 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
     // --- update nodal concentrations and mass balances
     for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
-        if ( Node[j].externalTreatment == 1 ) 
+        printf(" \n ExternalQual: %f \n", Node[j].externalQual[p]);
+        printf("\n Cin_ct: %f \n", Cin[p]);
+        cOut = Node[j].externalQual[p];
+        Node[j].externalTreatment = 0;
+
+        /*if ( Node[j].externalTreatment == 1 ) 
         {
             cOut = Node[j].externalQual[p];
             Node[j].externalTreatment = 0;
@@ -317,6 +323,7 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
             cOut = Node[j].newQual[p];
             Node[j].externalQual[p] = Node[j].newQual[p];
         }
+        */
         // --- mass lost must account for any initial mass in storage 
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 
                     cOut*(q*tStep + Node[j].oldVolume)) / tStep; 
@@ -325,6 +332,7 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
 
         // --- add mass loss to mass balance totals and revise nodal concentration
         massbal_addReactedMass(p, massLost);
+        
         Node[j].newQual[p] = cOut;
     }
 }

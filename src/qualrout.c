@@ -116,12 +116,12 @@ void qualrout_execute(double tStep)
         vAvg = (Node[j].oldVolume + Node[j].newVolume) / 2.0;
         
         // --- save inflow concentrations if treatment applied
-        if ( Node[j].treatment )
+        if ( Node[j].treatment || Node[j].externalTreatment == 1 )
         {
             if ( qIn < ZERO ) qIn = 0.0;
             treatmnt_setInflow(qIn, Node[j].newQual);
         }
-
+    
         // --- find new quality at the node 
         if ( Node[j].type == STORAGE || Node[j].oldVolume > FUDGE )
         {
@@ -130,9 +130,17 @@ void qualrout_execute(double tStep)
         else findNodeQual(j);
 
         // --- apply treatment to new quality values
-        if ( Node[j].treatment ) treatmnt_treat(j, qIn, vAvg, tStep);
-        treatmnt_custom(j, qIn, vAvg, tStep);
+        if ( Node[j].treatment && Node[j].externalTreatment == 0 ) 
+        {
+            treatmnt_treat(j, qIn, vAvg, tStep);
+        }
+        if ( Node[j].externalTreatment == 1 )
+        {
+            treatmnt_custom(j, qIn, vAvg, tStep);
+        }
         printf(" \n treat_step \n");
+        printf(" \n newQual: %f \n", Node[j].newQual[p]);
+
     }
 
     // --- find new water quality in each link
