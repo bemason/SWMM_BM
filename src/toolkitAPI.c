@@ -821,37 +821,39 @@ int DLLEXPORT swmm_getSubcatchOutConnection(int index, int *type, int *out_index
 // Active Simulation Results API
 //-------------------------------
 
-int DLLEXPORT swmm_getCurrentDateTimeStr(char *dtimestr)
+int DLLEXPORT swmm_getCurrentDateTime(int *year, int *month, int *day,
+                                      int *hour, int *minute, int *second)
 ///
-/// Output:  DateTime String
+/// Input:   timetype = time type to return
+/// Output:  year, month, day, hours, minutes, seconds = int
 /// Return:  API Error
-/// Purpose: Get the current simulation time
+/// Purpose: Get the simulation start, end and report date times
 {
-    //strcpy(dtimestr,"");
-    //Provide Empty Character Array
-    char     theDate[12];
-    char     theTime[9];
-    char     _DTimeStr[22];
     DateTime currentTime;
+    int error_code_index = 0;
+    *year = 1900;
+    *month = 1;
+    *day = 1;
+    *hour = 0;
+    *minute = 0;
+    *second = 0;
 
     // Check if Simulation is Running
-    if(swmm_IsStartedFlag() == FALSE) return(ERR_API_SIM_NRUNNING);
+    if(swmm_IsStartedFlag() == FALSE)
+    {
+        error_code_index = ERR_API_SIM_NRUNNING;
+    }
+    else
+    {
+        // Fetch Current Time
+        currentTime = getDateTime(NewRoutingTime);
 
-    // Fetch Current Time
-    currentTime = getDateTime(NewRoutingTime);
+        datetime_decodeDate(currentTime, year, month, day);
+        datetime_decodeTime(currentTime, hour, minute, second);
+    }
 
-    // Convert To Char
-    datetime_dateToStr(currentTime, theDate);
-    datetime_timeToStr(currentTime, theTime);
-
-    strcpy(_DTimeStr, theDate);
-    strcat(_DTimeStr, " ");
-    strcat(_DTimeStr, theTime);
-
-    strcpy(dtimestr, _DTimeStr);
-    return(0);
+    return error_getCode(error_code_index);
 }
-
 
 int DLLEXPORT swmm_getNodeResult(int index, int type, double *result)
 ///
