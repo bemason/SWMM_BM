@@ -138,9 +138,6 @@ void qualrout_execute(double tStep)
         {
             treatmnt_custom(j, qIn, vAvg, tStep);
         }
-        printf(" \n treat_step \n");
-        printf(" \n newQual: %f \n", Node[j].newQual[p]);
-
     }
 
     // --- find new water quality in each link

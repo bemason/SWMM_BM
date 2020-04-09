@@ -513,6 +513,7 @@ typedef struct
    double        oldNetInflow;    	// previous net inflow
    double*	     externalQual;    	// custom quality state
    int		     externalTreatment;     // 0 uses SWMMs treatment 1 uses externally defined treatment
+   double*       C_in;              // influent concentration 
 }  TNode;
 
 //---------------
@@ -671,6 +672,7 @@ typedef struct
    char          inletControl;    	// culvert inlet control flag
    double*	     externalQual;    	// custom quality state
    int		     externalTreatment;     // 0 uses SWMMs treatment 1 uses externally defined treatment
+   double*       C_in;              // influent concentration 
 }  TLink;
 
 //---------------

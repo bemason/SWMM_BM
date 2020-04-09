@@ -971,7 +971,7 @@ int DLLEXPORT swmm_getNodePollutant(int index, int pollutant_index, double *poll
     {
         if (pollutant_index < Nobjects[POLLUT])
         {
-            result = Node[index].externalQual[pollutant_index];
+            result = Node[index].C_in[pollutant_index];
         } 
         *pollutant = result;
     }

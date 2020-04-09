@@ -1039,6 +1039,7 @@ void createObjects()
         Node[j].oldQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Node[j].newQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Node[j].externalQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
+        Node[j].C_in = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Node[j].extInflow = NULL;
         Node[j].dwfInflow = NULL;
         Node[j].rdiiInflow = NULL;
@@ -1050,6 +1051,7 @@ void createObjects()
         Link[j].newQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Link[j].totalLoad = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Link[j].externalQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
+        Link[j].C_in = (double *) calloc(Nobjects[POLLUT], sizeof(double));
     }
 
     // --- allocate memory for land use buildup/washoff functions

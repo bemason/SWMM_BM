@@ -193,8 +193,6 @@ void  treatmnt_setInflow(double qIn, double wIn[])
         for (p = 0; p < Nobjects[POLLUT]; p++) Cin[p] = wIn[p]/qIn;
     else
         for (p = 0; p < Nobjects[POLLUT]; p++) Cin[p] = 0.0;
-
-    printf("\n SetInflow \n");
 }
 
 //=============================================================================
@@ -310,6 +308,7 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
     {
         printf(" \n ExternalQual: %f \n", Node[j].externalQual[p]);
         printf("\n Cin_ct: %f \n", Cin[p]);
+        Node[j].C_in[p] = Cin[p];
         cOut = Node[j].externalQual[p];
         Node[j].externalTreatment = 0;
 
