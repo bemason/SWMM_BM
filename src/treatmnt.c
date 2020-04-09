@@ -311,18 +311,7 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
         Node[j].C_in[p] = Cin[p];
         cOut = Node[j].externalQual[p];
         Node[j].externalTreatment = 0;
-
-        /*if ( Node[j].externalTreatment == 1 ) 
-        {
-            cOut = Node[j].externalQual[p];
-            Node[j].externalTreatment = 0;
-        }
-        else 
-        {
-            cOut = Node[j].newQual[p];
-            Node[j].externalQual[p] = Node[j].newQual[p];
-        }
-        */
+	    
         // --- mass lost must account for any initial mass in storage 
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 
                     cOut*(q*tStep + Node[j].oldVolume)) / tStep; 
