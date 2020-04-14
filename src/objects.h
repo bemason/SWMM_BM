@@ -514,6 +514,7 @@ typedef struct
    double*	     externalQual;    	// custom quality state
    int		     externalTreatment;     // 0 uses SWMMs treatment 1 uses externally defined treatment
    double*       C_in;              // influent concentration 
+   double*       C_2;               // newQual after findStorageQual
 }  TNode;
 
 //---------------
@@ -673,6 +674,7 @@ typedef struct
    double*	     externalQual;    	// custom quality state
    int		     externalTreatment;     // 0 uses SWMMs treatment 1 uses externally defined treatment
    double*       C_in;              // influent concentration 
+   double*       C_2;               // newQual after findStorageQual
 }  TLink;
 
 //---------------

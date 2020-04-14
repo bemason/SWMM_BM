@@ -973,6 +973,39 @@ int DLLEXPORT swmm_getNodePollutant(int index, int pollutant_index, double *poll
     {
         if (pollutant_index < Nobjects[POLLUT])
         {
+            result = Node[index].C_2[pollutant_index];
+        } 
+        *pollutant = result;
+    }
+    return(errcode);
+}
+
+int DLLEXPORT swmm_getNodeCin(int index, int pollutant_index, double *pollutant)
+///
+/// Input:   index = Index of desired ID
+///          pollutant_index = Index of desired pollutant
+/// Output:  result = Pollutant data for the desired node
+/// Return:  API Error
+/// Purpose: Gets Node's pollutant concentrations
+{
+    int p;
+    int errcode = 0;
+    double result;
+
+    // Check if Open
+    if(swmm_IsOpenFlag() == FALSE)
+    {
+        errcode = ERR_API_INPUTNOTOPEN;
+    }
+    // Check if object index is within bounds
+    else if (index < 0 || index >= Nobjects[NODE])
+    {
+        errcode = ERR_API_OBJECT_INDEX;
+    }
+    else
+    {
+        if (pollutant_index < Nobjects[POLLUT])
+        {
             result = Node[index].C_in[pollutant_index];
         } 
         *pollutant = result;
