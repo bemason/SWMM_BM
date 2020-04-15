@@ -327,10 +327,11 @@ void findLinkQual(int i, double tStep)
 
         // --- reduce concen. by 1st-order reaction
         c2 = getReactedQual(p, c1, v1, tStep);
-
+    
         // --- mix resulting contents with inflow from upstream node
         wIn = Node[j].newQual[p]*qIn;
         c2 = getMixedQual(c2, v1, wIn, qIn, tStep);
+        Link[i].C_2[p] = c2;
 
         // --- set concen. to zero if remaining volume is negligible
         if ( v2 < ZeroVolume )
@@ -338,9 +339,21 @@ void findLinkQual(int i, double tStep)
             massbal_addToFinalStorage(p, c2 * v2);
             c2 = 0.0;
         }
-
-        // --- assign new concen. to link
-        Link[i].newQual[p] = c2;
+         // --- assign new concen. to link
+        if (Link[i].externalTreatment == 0) Link[i].newQual[p] = c2;
+        else 
+        {
+            if ( c2 == 0.0 )
+            {
+                Link[i].newQual[p] = c2;
+            }
+            else
+            {
+                Link[i].newQual[p] = Link[i].externalQual[p];
+                Link[i].externalTreatment = 0;
+                printf(" \n ExternalQual_Link: %f \n", Link[i].externalQual[p]);
+            }
+        }
     }
 }
 
@@ -509,4 +522,3 @@ double getReactedQual(int p, double c, double v1, double tStep)
     massbal_addReactedMass(p, lossRate);
     return c2;
 }
- 

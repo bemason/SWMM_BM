@@ -1052,7 +1052,6 @@ void createObjects()
         Link[j].newQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Link[j].totalLoad = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Link[j].externalQual = (double *) calloc(Nobjects[POLLUT], sizeof(double));
-        Link[j].C_in = (double *) calloc(Nobjects[POLLUT], sizeof(double));
         Link[j].C_2 = (double *) calloc(Nobjects[POLLUT], sizeof(double));
     }
 
