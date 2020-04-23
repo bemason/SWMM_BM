@@ -1013,6 +1013,35 @@ int DLLEXPORT swmm_getNodeCin(int index, int pollutant_index, double *pollutant)
     return(errcode);
 }
 
+int DLLEXPORT swmm_getNodeHRT(int index, double *value)
+///
+/// Input:   index = Index of desired ID
+/// Output:  result = HRT for the desired storage node
+/// Return:  API Error
+/// Purpose: Gets Node's HRT (hours)
+{
+    int errcode = 0;
+    double result;
+
+    // Check if Open
+    if(swmm_IsOpenFlag() == FALSE)
+    {
+        errcode = ERR_API_INPUTNOTOPEN;
+    }
+    // Check if object index is within bounds
+    else if (index < 0 || index >= Nobjects[NODE])
+    {
+        errcode = ERR_API_OBJECT_INDEX;
+    }
+    else
+    {
+        result = Storage[index].hrt; 
+        *value = result;
+    }
+    return(errcode);
+}
+
+
 int DLLEXPORT swmm_setNodePollutant(int index, int pollutant_index, double pollutant)
 ///
 /// Input:   index = Index of desired ID

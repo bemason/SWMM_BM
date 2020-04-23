@@ -497,6 +497,7 @@ void updateHRT(int j, double v, double q, double tStep)
     if ( v < ZERO ) hrt = 0.0;
     else hrt = (hrt + tStep) * v / (v + q*tStep);
     Storage[k].hrt = MAX(hrt, 0.0);
+    printf("\n HRT: %f \n", Storage[k].hrt);
 }
 
 //=============================================================================
