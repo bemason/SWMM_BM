@@ -136,9 +136,6 @@ BOOST_AUTO_TEST_CASE(model_not_open) {
     error = swmm_getSubcatchPollut(0, 0, &result_array);
     BOOST_CHECK_EQUAL(error, ERR_API_INPUTNOTOPEN);
 
-    // //Pollutant Node
-    error = swmm_getNodePollutant(0, 0, &val);
-    BOOST_CHECK_EQUAL(error, ERR_API_INPUTNOTOPEN);
 }
 
 
@@ -228,10 +225,6 @@ BOOST_FIXTURE_TEST_CASE(object_bounds_check, FixtureOpenClose) {
     //Pollutant Subcatchment
     error = swmm_getSubcatchPollut(100, 0, &result_array);
     BOOST_CHECK_EQUAL(error, ERR_API_OBJECT_INDEX);
-
-    // //Pollutant Node
-    error = swmm_getNodePollutant(100, 0, &val);
-    BOOST_CHECK_EQUAL(error, ERR_API_INPUTNOTOPEN);
 }
 
 

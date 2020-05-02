@@ -339,7 +339,8 @@ void findLinkQual(int i, double tStep)
             massbal_addToFinalStorage(p, c2 * v2);
             c2 = 0.0;
         }
-         // --- assign new concen. to link
+        
+        // --- assign new concen. to link
         if (Link[i].externalTreatment == 0) Link[i].newQual[p] = c2;
         else 
         {

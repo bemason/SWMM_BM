@@ -947,7 +947,7 @@ int DLLEXPORT swmm_getNodePollut(int index, int type, double **PollutArray)
     return error_getCode(error_code_index);
 }
 
-int DLLEXPORT swmm_getNodePollutant(int index, int pollutant_index, double *pollutant)
+int DLLEXPORT swmm_getNodeC2(int index, int pollutant_index, double *pollutant)
 ///
 /// Input:   index = Index of desired ID
 ///          pollutant_index = Index of desired pollutant
@@ -1073,6 +1073,7 @@ int DLLEXPORT swmm_setNodePollutant(int index, int pollutant_index, double pollu
     }
     return(errcode);
 }
+
 int DLLEXPORT swmm_getLinkPollut(int index, int type, double **PollutArray)
 ///
 /// Input:   index = Index of desired ID
@@ -1128,7 +1129,7 @@ int DLLEXPORT swmm_getLinkPollut(int index, int type, double **PollutArray)
     return error_getCode(error_code_index);
 }
 
-int DLLEXPORT swmm_getLinkPollutant(int index, int pollutant_index, double *pollutant)
+int DLLEXPORT swmm_getLinkC2(int index, int pollutant_index, double *pollutant)
 ///
 /// Input:   index = Index of desired ID
 ///          pollutant_index = Index of desired pollutant

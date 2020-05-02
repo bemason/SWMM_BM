@@ -726,7 +726,6 @@ int DLLEXPORT swmm_getCurrentDateTimeStr(char *dtimestr);
  @return Error code
 */
 int DLLEXPORT swmm_getNodeResult(int index, int type, double *result);
-int DLLEXPORT swmm_getNodePollutant(int index, int pollutant_index, double *pollutant);
 /**
  @brief Get a result value for specified link.
  @param index The index of a link
@@ -735,7 +734,6 @@ int DLLEXPORT swmm_getNodePollutant(int index, int pollutant_index, double *poll
  @return Error code
 */
 int DLLEXPORT swmm_getLinkResult(int index, int type, double *result);
-
 /**
  @brief Get a result value for specified subcatchment.
  @param index The index of a subcatchment
