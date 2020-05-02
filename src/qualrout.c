@@ -233,11 +233,16 @@ void findNodeQual(int j)
         for (p = 0; p < Nobjects[POLLUT]; p++)
         {
             Node[j].newQual[p] /= qNode;
+            Node[j].C_2[p] = Node[j].newQual[p];
         }
     }
 
     // --- otherwise concen. is 0
-    else for (p = 0; p < Nobjects[POLLUT]; p++) Node[j].newQual[p] = 0.0;
+    else for (p = 0; p < Nobjects[POLLUT]; p++) 
+    {
+        Node[j].newQual[p] = 0.0;
+        Node[j].C_2[p] = 0.0;
+    }
 }
 
 //=============================================================================

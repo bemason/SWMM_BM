@@ -292,7 +292,6 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
 //           q     = inflow to node (cfs)
 //           v     = volume of node (ft3)
 //           tStep = routing time step (sec)
-//           externalTreatment = 1 if flag for external treatment, bypass SWMM treatment (0 for SWMM treatment)
 //  Output:  none
 //  Purpose: updates pollutant concentrations at a node after treatment.
 //
