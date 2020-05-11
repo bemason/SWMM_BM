@@ -1161,6 +1161,33 @@ int DLLEXPORT swmm_getLinkC2(int index, int pollutant_index, double *pollutant)
     }
     return(errcode);
 }
+int DLLEXPORT swmm_getConduitVelocity(int index, double *value)
+///
+/// Input:   index = Index of desired ID
+/// Output:  result = velocity for the desired conduit
+/// Return:  API Error
+/// Purpose: Gets link velocity
+{
+    int errcode = 0;
+    double result;
+
+    // Check if Open
+    if(swmm_IsOpenFlag() == FALSE)
+    {
+        errcode = ERR_API_INPUTNOTOPEN;
+    }
+    // Check if object index is within bounds
+    else if (index < 0 || index >= Nobjects[LINK])
+    {
+        errcode = ERR_API_OBJECT_INDEX;
+    }
+    else
+    {
+        result = Link[index].velocity;  
+        *value = result;
+    }
+    return(errcode);
+}
 
 int DLLEXPORT swmm_setLinkPollutant(int index, int pollutant_index, double pollutant)
 ///

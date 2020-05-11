@@ -674,6 +674,7 @@ typedef struct
    double*	     externalQual;    	// custom quality state
    int		     externalTreatment;     // 0 uses SWMMs treatment 1 uses externally defined treatment
    double*       C_2;               // newQual after findStorageQual
+   double        velocity;          // velocity (ft/s)
 }  TLink;
 
 //---------------

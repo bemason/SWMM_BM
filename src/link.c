@@ -814,6 +814,7 @@ double link_getVelocity(int j, double flow, double depth)
         area = xsect_getAofY(&Link[j].xsect, depth);
         if (area > FUDGE ) veloc = flow / area;
     }
+    Link[j].velocity = veloc;
     return veloc;
 }
 
