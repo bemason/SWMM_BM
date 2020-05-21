@@ -20,8 +20,6 @@
 
 /Users/HP/Stormwater-Management-Model/src/globals.h
 
-/Users/HP/Stormwater-Management-Model/src/hash.h
-
 /Users/HP/Stormwater-Management-Model/src/headers.h
 stdio.h
 -
@@ -64,29 +62,11 @@ exfil.h
 
 /Users/HP/Stormwater-Management-Model/src/text.h
 
-/Users/HP/Stormwater-Management-Model/src/toolkitAPI.c
-stdio.h
--
+/Users/HP/Stormwater-Management-Model/src/treatmnt.c
 stdlib.h
 -
 string.h
 -
-math.h
--
 headers.h
 /Users/HP/Stormwater-Management-Model/src/headers.h
-swmm5.h
-/Users/HP/Stormwater-Management-Model/src/swmm5.h
-toolkitAPI.h
-/Users/HP/Stormwater-Management-Model/src/toolkitAPI.h
-hash.h
-/Users/HP/Stormwater-Management-Model/src/hash.h
-
-include/swmm5.h
-
-include/toolkitAPI.h
-../src/datetime.h
-src/datetime.h
-
-src/datetime.h
 
