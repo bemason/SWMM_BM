@@ -1052,7 +1052,7 @@ int DLLEXPORT swmm_setNodePollutant(int index, int pollutant_index, double pollu
     int p;
     int errcode = 0;
     double result;
-    printf("\n SetPollutant \n");
+
     // Check if Open
     if(swmm_IsOpenFlag() == FALSE)
     {

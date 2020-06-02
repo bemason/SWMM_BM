@@ -296,7 +296,6 @@ void node_setOldQualState(int j)
 //  Purpose: replaces a node's old water quality state values with new ones.
 //
 {
-    printf("\n node_setOldQualState \n");
     int p;
     for (p = 0; p < Nobjects[POLLUT]; p++)
     {

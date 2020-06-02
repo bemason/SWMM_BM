@@ -69,7 +69,6 @@ int  treatmnt_open(void)
 //
 
 {
-    printf("\n treatmnt_open \n");
     R = NULL;
     Cin = NULL;
     if ( Nobjects[POLLUT] > 0 )
@@ -210,7 +209,7 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
     double cOut;                       // concentration after treatment
     double massLost;                   // mass lost by treatment per time step
     TTreatment* treatment;             // pointer to treatment object
-    printf("\n treatmnt_treat \n");
+
     // --- set locally shared variables for node j
     if ( Node[j].treatment == NULL ) return;
     ErrCode = 0;
@@ -234,7 +233,6 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
 
         // --- otherwise evaluate the treatment expression to find R[p]
         else getRemoval(p);
-        printf("\n getRemoval \n");
     }
 
     // --- check for error condition
@@ -246,7 +244,6 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
     // --- update nodal concentrations and mass balances
     else for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
-        printf("\n Cin_tt: %f \n", Cin[p]);
         if ( R[p] == 0.0 ) continue;
         treatment = &Node[j].treatment[p];
 
@@ -263,21 +260,18 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
             // --- cOut can't be greater than mixture concen. at node
             //     (i.e., in case node is a storage unit) 
             cOut = MIN(cOut, Node[j].newQual[p]);
-            printf("\n RemovQual: %f \n", cOut);
         }
 
         // --- concentration-type equations get applied to nodal concentration
         else
         {
             cOut = (1.0 - R[p]) * Node[j].newQual[p];
-            printf("\n ConcQual: %f \n", cOut);
         }
 
         // --- mass lost must account for any initial mass in storage 
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 
                    cOut*(q*tStep + Node[j].oldVolume)) / tStep; 
         massLost = MAX(0.0, massLost);
-        printf("\n massLost: %f \n", massLost);  
 
         // --- add mass loss to mass balance totals and revise nodal concentration
         massbal_addReactedMass(p, massLost);
@@ -300,24 +294,19 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
     double cOut;                       // concentration after treatment
     double massLost;                   // mass lost by treatment per time step
 
-    printf("\n treatmnt_custom \n"); 
-
     // --- update nodal concentrations and mass balances
     for ( p = 0; p < Nobjects[POLLUT]; p++ )
     {
-        printf("\n Cin_ct: %f \n", Cin[p]);
         Node[j].C_in[p] = Cin[p];
 
         if ( Cin[p] == 0.0 || Node[j].newQual[p] == 0.0 ) 
         {
             cOut = Node[j].newQual[p];
-            printf(" \n newQual: %f \n", Node[j].newQual[p]);
             Node[j].externalTreatment = 0;
         }
         else 
         {
             cOut = Node[j].externalQual[p];
-            printf(" \n ExternalQual: %f \n", Node[j].externalQual[p]);
             Node[j].externalTreatment = 0;
         }
 	    
@@ -325,7 +314,6 @@ void  treatmnt_custom(int j, double q, double v, double tStep)
         massLost = (Cin[p]*q*tStep + Node[j].oldQual[p]*Node[j].oldVolume - 
                     cOut*(q*tStep + Node[j].oldVolume)) / tStep; 
         massLost = MAX(0.0, massLost);
-        printf("\n massLost: %f \n", massLost); 
 
         // --- add mass loss to mass balance totals and revise nodal concentration
         massbal_addReactedMass(p, massLost);
@@ -344,7 +332,7 @@ int  createTreatment(int j)
 //
 {
     int p;
-    printf("\n createTreatment \n");
+
     Node[j].treatment = (TTreatment *) calloc(Nobjects[POLLUT],
                                               sizeof(TTreatment));
     if ( Node[j].treatment == NULL )

@@ -103,8 +103,6 @@ void qualrout_execute(double tStep)
     int    i, j, p;
     double qIn, vAvg;
 
-    printf("\n qualrout_execute \n");
-
     // --- find mass flow each link contributes to its downstream node
     for ( i = 0; i < Nobjects[LINK]; i++ ) findLinkMassFlow(i, tStep);
 
@@ -225,7 +223,7 @@ void findNodeQual(int j)
 {
     int    p;
     double qNode;
-    printf("\n findNodeQual \n");
+
     // --- if there is flow into node then concen. = mass inflow/node flow
     qNode = Node[j].inflow;
     if ( qNode > ZERO )
@@ -357,7 +355,6 @@ void findLinkQual(int i, double tStep)
             {
                 Link[i].newQual[p] = Link[i].externalQual[p];
                 Link[i].externalTreatment = 0;
-                printf(" \n ExternalQual_Link: %f \n", Link[i].externalQual[p]);
             }
         }
     }
@@ -424,7 +421,7 @@ void  findStorageQual(int j, double tStep)
            qExfil = 0.0,     // exfiltration rate from storage unit (cfs)
            vEvap = 0.0,      // evaporation loss from storage unit (ft3)
            fEvap = 1.0;      // evaporation concentration factor
-    printf("\n findStorageQual \n");
+
     // --- get inflow rate & initial volume
     qIn = Node[j].inflow;
     v1 = Node[j].oldVolume;
@@ -481,7 +478,6 @@ void  findStorageQual(int j, double tStep)
         // --- assign new concen. to node
         Node[j].newQual[p] = c2;
         Node[j].C_2[p] = c2;
-        printf("\n StorageQual: %f \n", c2);
     }
 }
 
@@ -503,7 +499,6 @@ void updateHRT(int j, double v, double q, double tStep)
     if ( v < ZERO ) hrt = 0.0;
     else hrt = (hrt + tStep) * v / (v + q*tStep);
     Storage[k].hrt = MAX(hrt, 0.0);
-    printf("\n HRT: %f \n", Storage[k].hrt);
 }
 
 //=============================================================================
