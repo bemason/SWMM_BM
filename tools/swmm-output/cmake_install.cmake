@@ -1,4 +1,4 @@
-# Install script for directory: /Users/HP/Stormwater-Management-Model/tools/swmm-output
+# Install script for directory: /Users/HP/Stormwater-Management-Model_BM/tools/swmm-output
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

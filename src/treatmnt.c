@@ -260,12 +260,14 @@ void  treatmnt_treat(int j, double q, double v, double tStep)
             // --- cOut can't be greater than mixture concen. at node
             //     (i.e., in case node is a storage unit) 
             cOut = MIN(cOut, Node[j].newQual[p]);
+            printf("treatmnt_treat %f \n", Node[j].newQual[p]);
         }
 
         // --- concentration-type equations get applied to nodal concentration
         else
         {
             cOut = (1.0 - R[p]) * Node[j].newQual[p];
+            printf("treatmnt_treat %f \n", Node[j].newQual[p]);
         }
 
         // --- mass lost must account for any initial mass in storage 
